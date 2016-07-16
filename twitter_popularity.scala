@@ -41,14 +41,15 @@ object twitter_popularity {
 	val sparkConf = new SparkConf().setAppName("twitter_popularity")
     val ssc = new StreamingContext(sparkConf, Seconds(sampleDuration))
     val stream = TwitterUtils.createStream(ssc, None, filters)
-
-	// extract hashtags and usernames
+	
+	// extract hashtags and users
     val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
     val mentions = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("@")).filter(_.length > 1))
-    val authors = stream.flatMap(status => status.getUser.getScreenName().split(" "))
-
-	// concatenate a single list of users
-	val users = authors
+    val authors = stream.flatMap(status => status.getUser.getScreenName().split(" ").map(s => "@"+s))
+	
+	// combine mentions and authors into users
+	val users = mentions.union(authors)
+	
 	
     val topHashTags60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
                      .map{case (topic, count) => (count, topic)}
@@ -76,7 +77,7 @@ object twitter_popularity {
     topUsers60.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular users in last %d seconds (%s total):".format(executionTime, rdd.count()))
-      topList.foreach{case (count, tag) => println("@%s (%s tweets)".format(tag, count))}
+      topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
     topHashTags10.foreachRDD(rdd => {
@@ -88,7 +89,7 @@ object twitter_popularity {
     topUsers10.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular users in last %d seconds (%s total):".format(sampleDuration, rdd.count()))
-      topList.foreach{case (count, tag) => println("@%s (%s tweets)".format(tag, count))}
+      topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
     ssc.start()
