@@ -1,18 +1,6 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * W251 HW9 - Streaming Tweet Processing
+ * Chris Murray
  */
 
 // scalastyle:off println
@@ -28,9 +16,8 @@ import org.apache.spark.SparkConf
  * stream. The stream is instantiated with credentials and optionally filters supplied by the
  * command line arguments.
  *
- * Run this on your local machine as
- *
  */
+
 object twitter_popularity {
   def main(args: Array[String]) {
 
@@ -41,60 +28,67 @@ object twitter_popularity {
 
 	var sampleDuration = args(0).toInt
 	var topN = args(1).toInt
-	var executionTime = args(2).toInt
+	var executionTime = args(2).toInt * 60
 
 	println(s"sampleDuration=${sampleDuration}, topN=${topN}, executionTime=${executionTime}")
 	
 	// Twitter credentials moved to twitter4j.properties
+
+	// don't filter out any tweets
 	val filters = Array[String]()
 
+	// get a Twitter stream
 	val sparkConf = new SparkConf().setAppName("twitter_popularity")
-    val ssc = new StreamingContext(sparkConf, Seconds(2))
+    val ssc = new StreamingContext(sparkConf, Seconds(sampleDuration))
     val stream = TwitterUtils.createStream(ssc, None, filters)
 
+	// extract hashtags and usernames
     val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
-    val users = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("@")))
-	// TODO: add author of tweet to list of users
+    val mentions = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("@")).filter(_.length > 1))
+    val authors = stream.flatMap(status => status.getUser.getScreenName().split(" "))
+
+	// concatenate a single list of users
+	val users = authors
 	
-    val topHashTags60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(60))
+    val topHashTags60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
                      .map{case (topic, count) => (count, topic)}
                      .transform(_.sortByKey(false))
 
-    val topUsers60 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(60))
+    val topUsers60 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
+                     .map{case (user, count) => (count, user)}
+                     .transform(_.sortByKey(false))
+
+    val topHashTags10 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
                      .map{case (topic, count) => (count, topic)}
                      .transform(_.sortByKey(false))
 
-    val topHashTags10 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(10))
-                     .map{case (topic, count) => (count, topic)}
-                     .transform(_.sortByKey(false))
-
-    val topUsers10 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(10))
-                     .map{case (topic, count) => (count, topic)}
+    val topUsers10 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
+                     .map{case (user, count) => (count, user)}
                      .transform(_.sortByKey(false))
 
     // Print popular hashtags
     topHashTags60.foreachRDD(rdd => {
-      val topList = rdd.take(10)
-      println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
+      val topList = rdd.take(topN)
+      println("\nPopular topics in last %d seconds (%s total):".format(executionTime, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
     topUsers60.foreachRDD(rdd => {
-      val topList = rdd.take(10)
-      println("\nPopular users in last 60 seconds (%s total):".format(rdd.count()))
-      topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
+      val topList = rdd.take(topN)
+      println("\nPopular users in last %d seconds (%s total):".format(executionTime, rdd.count()))
+      topList.foreach{case (count, tag) => println("@%s (%s tweets)".format(tag, count))}
     })
 
     topHashTags10.foreachRDD(rdd => {
-      val topList = rdd.take(10)
-      println("\nPopular topics in last 10 seconds (%s total):".format(rdd.count()))
+      val topList = rdd.take(topN)
+      println("\nPopular topics in last %d seconds (%s total):".format(sampleDuration, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
     topUsers10.foreachRDD(rdd => {
-      val topList = rdd.take(10)
-      println("\nPopular users in last 10 seconds (%s total):".format(rdd.count()))
-      topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
+      val topList = rdd.take(topN)
+      println("\nPopular users in last %d seconds (%s total):".format(sampleDuration, rdd.count()))
+      topList.foreach{case (count, tag) => println("@%s (%s tweets)".format(tag, count))}
     })
 
     ssc.start()
