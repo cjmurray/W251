@@ -52,7 +52,7 @@ object twitter_popularity {
 	// create hashtag:author pairs
 	val hashtagAuthorsShort = stream.flatMap(status => {
 			val author = "@" + status.getUser.getScreenName
-			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
+			val hashtags = status.getText.split("\\s+").filter(_.startsWith("#"))
 			hashtags.map(tag =>	(tag, author))
 		}).reduceByKeyAndWindow(_ + "," + _, Seconds(shortSampleDuration))
 		
@@ -77,7 +77,7 @@ object twitter_popularity {
 	// create hashtag:author pairs
 	val hashtagAuthorsLong = stream.flatMap(status => {
 			val author = "@" + status.getUser.getScreenName
-			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
+			val hashtags = status.getText.split("\\s+").filter(_.startsWith("#"))
 			hashtags.map(tag =>	(tag, author))
 		}).reduceByKeyAndWindow(_ + "," + _, Seconds(longSampleDuration))
 		

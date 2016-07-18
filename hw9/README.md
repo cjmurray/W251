@@ -48,8 +48,7 @@
 	Hashtag: #MilletDestanYazıyor (12 tweets)
 	Authors: @JaleMazgr,@ihsan_peker,@YilmazYil00,@sevgierdogann2,@TandoganOnder,@yilmaz_bayramm,@TurAk00,@taskintaskopar2,@ErolErolatak,@yaseminkaplann2,@HaticekbraAkkk,@hwdurmus
 	----------
-	Hashtag: #DolceAmorePusongBato
-	Keep (10 tweets)
+	Hashtag: #DolceAmorePusongBatoKeep (10 tweets)
 	Authors: @hope_hopie,@liza4modess,@mynameiscalay,@SerenaSese01,@BIGme2016,@QuentooQuenitoy,@leez_quen,@QuenxLiz,@leezquee4,@jgtrinity
 	----------
 	Hashtag: #androidgames, (10 tweets)
@@ -64,8 +63,7 @@
 	Hashtag: #TeenChoice (9 tweets)
 	Authors: @kayceesierra16,@mile1694,@mile1694,@AngelHole1,@ROJKIRIE,@kyumin3013,@jtfantko,@sjelf4ever02,@kyliestyles0102
 	----------
-	Hashtag: #DolceAmorePusongBato
-	If (8 tweets)
+	Hashtag: #DolceAmorePusongBatoIf (8 tweets)
 	Authors: @Intoliza11,@adoradomaris,@intoquenGIL,@honeyniQUEN,@princes11098691,@leezquee4,@04Serten,@amoremioLQ
 	----------
 	Hashtag: #BIGOLIVE. (8 tweets)
