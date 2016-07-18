@@ -49,50 +49,30 @@ object twitter_popularity {
     val ssc = new StreamingContext(sparkConf, Seconds(sampleDuration))
     val stream = TwitterUtils.createStream(ssc, None, filters)
 		
+	// create hashtag:author pairs
 	val hashtagAuthors = stream.flatMap(status => {
 			val author = "@" + status.getUser.getScreenName
 			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
 			hashtags.map(tag =>	(tag, author))
 		}).reduceByKeyAndWindow(_ + "," + _, Seconds(sampleDuration))
 		
+	// create count:hashtag-authors pairs
 	val countHashtagAuthors = hashtagAuthors.map{case (tag, authors) =>
 		val count = authors.split(",").length
 		(count, tag + " " + authors)
 	}.transform(_.sortByKey(false))
 	
+	// print out top N hashtags
 	countHashtagAuthors.foreachRDD(rdd => {
-		val topList = rdd.take(10)
-		println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
-		topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
+		val topList = rdd.take(topN)
+		println("\nPopular topics in last %d seconds (%s total):\n".format(sampleDuration, rdd.count()))
+		topList.foreach{case (count, tagAuthors) => 
+			val fields = tagAuthors.split(" ")
+			println("Hashtag: %s (%s tweets)".format(fields(0), count))
+			println("Authors: %s".format(fields(1)))
+			println("-"*10)
+		}
 	})
-	
-/* 	hashtagAuthors.foreachRDD(rdd => {
-		val topList = rdd.take(10)
-		println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
-		topList.foreach{case (tag, authors) => println("%s %s".format(tag, authors))}
-	})
- */	
-
-	// val containsThe = stream.map{ status => 
-		// if (status.getText.contains("the"))
-			// status.getText
-	// }
-
-	// containsThe.foreachRDD(rdd => {
-		// println("dig")
-		// rdd.collect.foreach{s =>
-			// println(s)
-		// }
-	// })
-	
-	// get all the tweets containing popular hashtags
-    // val hashtags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
-	
-	// find authors of tweets of popular hashtags
-    // val authors = stream.flatMap(status => status.getUser.getScreenName().split(" ").map(s => "@"+s))
-
-	// find mentions in tweets with popular hashtags
-
 	
     ssc.start()
     ssc.awaitTermination()
