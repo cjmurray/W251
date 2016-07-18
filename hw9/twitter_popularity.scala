@@ -79,7 +79,7 @@ object twitter_popularity {
 			val author = "@" + status.getUser.getScreenName
 			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
 			hashtags.map(tag =>	(tag, author))
-		}).reduceByKeyAndWindow(_ + "," + _, Seconds(shortSampleDuration))
+		}).reduceByKeyAndWindow(_ + "," + _, Seconds(longSampleDuration))
 		
 	// create count:hashtag-authors pairs
 	val countHashtagAuthorsLong = hashtagAuthorsLong.map{case (tag, authors) =>
@@ -90,7 +90,7 @@ object twitter_popularity {
 	// print out top N hashtags
 	countHashtagAuthorsLong.foreachRDD(rdd => {
 		val topList = rdd.take(topN)
-		println("\nPopular topics in last %d seconds (%s total):\n".format(shortSampleDuration, rdd.count()))
+		println("\nPopular topics in last %d seconds (%s total):\n".format(longSampleDuration, rdd.count()))
 		topList.foreach{case (count, tagAuthors) => 
 			val fields = tagAuthors.split(" ")
 			println("Hashtag: %s (%s tweets)".format(fields(0), count))
