@@ -43,7 +43,7 @@ object twitter_popularity {
     val stream = TwitterUtils.createStream(ssc, None, filters)
 	
 	// extract hashtags and users
-    val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
+    val hashtags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
     val mentions = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("@")).filter(_.length > 1))
     val authors = stream.flatMap(status => status.getUser.getScreenName().split(" ").map(s => "@"+s))
 	
@@ -51,42 +51,42 @@ object twitter_popularity {
 	val users = mentions.union(authors)
 	
 	
-    val topHashTags60 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
+    val topHashtagsLong = hashtags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
                      .map{case (topic, count) => (count, topic)}
                      .transform(_.sortByKey(false))
 
-    val topUsers60 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
+    val topUsersLong = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(executionTime))
                      .map{case (user, count) => (count, user)}
                      .transform(_.sortByKey(false))
 
-    val topHashTags10 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
+    val topHashtagsShort = hashtags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
                      .map{case (topic, count) => (count, topic)}
                      .transform(_.sortByKey(false))
 
-    val topUsers10 = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
+    val topUsersShort = users.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
                      .map{case (user, count) => (count, user)}
                      .transform(_.sortByKey(false))
 
     // Print popular hashtags
-    topHashTags60.foreachRDD(rdd => {
+    topHashtagsLong.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular topics in last %d seconds (%s total):".format(executionTime, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
-    topUsers60.foreachRDD(rdd => {
+    topUsersLong.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular users in last %d seconds (%s total):".format(executionTime, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
-    topHashTags10.foreachRDD(rdd => {
+    topHashtagsShort.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular topics in last %d seconds (%s total):".format(sampleDuration, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
     })
 
-    topUsers10.foreachRDD(rdd => {
+    topUsersShort.foreachRDD(rdd => {
       val topList = rdd.take(topN)
       println("\nPopular users in last %d seconds (%s total):".format(sampleDuration, rdd.count()))
       topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
