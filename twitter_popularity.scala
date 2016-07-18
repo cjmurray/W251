@@ -49,36 +49,29 @@ object twitter_popularity {
     val ssc = new StreamingContext(sparkConf, Seconds(sampleDuration))
     val stream = TwitterUtils.createStream(ssc, None, filters)
 		
-	// extract hashtags
-    val hashtags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
-			
-	// count hashtags
-    val hashtagCount = hashtags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(sampleDuration))
-		 .map{case (topic, count) => (count, topic)}
-		 .transform(_.sortByKey(false))
-
-	var topHashtags = new ListBuffer[String]()
-	
-	hashtagCount.foreachRDD(rdd => {
-		val topHashtagCount = rdd.take(topN)
-		topHashtagCount.foreach{case (count, tag) => topHashtags += tag}
-		println("topHashtags: " + topHashtags)
-	})
-	
-	val hashtagAuthors = stream.map(status => {
-			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
+	val hashtagAuthors = stream.flatMap(status => {
 			val author = "@" + status.getUser.getScreenName
-			hashtags.foreach{tag =>
-				(tag, author)
-			}
-		})
-		// .reduceByKeyAndWindow(_.mkString(",", Seconds(sampleDuration)))
+			val hashtags = status.getText.split(" ").filter(_.startsWith("#"))
+			hashtags.map(tag =>	(tag, author))
+		}).reduceByKeyAndWindow(_ + "," + _, Seconds(sampleDuration))
+		
+	val countHashtagAuthors = hashtagAuthors.map{case (tag, authors) =>
+		val count = authors.split(",").length
+		(count, tag + " " + authors)
+	}.transform(_.sortByKey(false))
 	
-	hashtagAuthors.foreachRDD(rdd => {
-		println("hashtagAuthors: " + rdd.collect)
+	countHashtagAuthors.foreachRDD(rdd => {
+		val topList = rdd.take(10)
+		println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
+		topList.foreach{case (count, tag) => println("%s (%s tweets)".format(tag, count))}
 	})
 	
-	
+/* 	hashtagAuthors.foreachRDD(rdd => {
+		val topList = rdd.take(10)
+		println("\nPopular topics in last 60 seconds (%s total):".format(rdd.count()))
+		topList.foreach{case (tag, authors) => println("%s %s".format(tag, authors))}
+	})
+ */	
 
 	// val containsThe = stream.map{ status => 
 		// if (status.getText.contains("the"))
