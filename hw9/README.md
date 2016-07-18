@@ -2,13 +2,13 @@
 
 ### To execute
 
-  cd hw9
-  ./run.sh
+	cd hw9
+	./run.sh
 
 
 ### To adjust parameters
 
-  vi run.sh
+	vi run.sh
 
 
 ### Example output:
