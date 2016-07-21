@@ -14,6 +14,14 @@ Chris Murray
 	vi run.sh
 
 
+### Interesting design decision
+
+Getting a list of popular hashtags was easy.  Keeping track of authors associated with
+the hashtags was a little more difficult.  But keeping track of authors plus mentions 
+proved challenging for me, until I finally figured out that the value for my key:value 
+pair could be an object!  Once I realized that it was rather simple.
+
+
 ### Example output:
 
 	Popular topics in last 1800 seconds (835 total):
