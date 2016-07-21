@@ -1,5 +1,8 @@
 ## W251 HW9 - Spark Streaming
 
+Chris Murray
+
+
 ### To execute
 
 	cd hw9
@@ -13,67 +16,84 @@
 
 ### Example output:
 
-	Popular topics in last 600 seconds (2469 total):
+	Popular topics in last 1800 seconds (835 total):
 
-	Hashtag: #MTVHottest (138 tweets)
-	Authors: @miabieeeber,@r0ckzmevato,@lacrezsense,@_BundadoDallas,@justinx_only,@_onlyonegirl,@heynickB_,@NaHAlvesH,@TahzinhaMalik,@pookkyy41,@beyhive57310347,@1d_xx1dxx,@pookkyy44,@agathahoran20,@intense_larry,@pookkyy5,@Nick_Glader,@ArianaDollx,@AdrianaisStyles,@_foreverbiebah,@CristhyEM,@xuleea_,@PiinkBecstinSky,@hivalle_,@bey5s0s,@qwdvbn1,@cesaraquino20,@pookkyy72,@girlsstalkluke,@irwinismyangel,@cacau10e,@zouis_infinityx,@FALLTOJENDALL,@ana42361,@rainhasgomez,@ArianeKocham,@pookkyy34,@kyliejwnnerx,@nicki13023839,@marainabey,@nataliebey1,@_badg4lririh,@ErtuyiTryuk,@tunedshawn,@zaynsl1,@jessiepxxxxxxxx,@AdrianaisStyles,@littlem08943038,@cacau10e,@yonce37578603,@ConnorMckegney,@bey5s0s,@poilkja,@kawaii_Sayriin,@fuckingdopex_,@votinggghelpjb,@grierxb,@jadeypoppys4,@mixervoteaccs3,@mixervoteaccs2,@rainhasgomez,@hitabelieve,@pookkyy34,@JAUREGGUYS,@AdrianaisStyles,@xxxyonce,@vams09050321,@strongomezx,@zarry_lerrie,@gonzalezvazqu17,@vams09050321,@pookkyy33,@88AUBRIH,@Viiiiiihkk,@mennahe97882426,@_DanR3,@lanadefender,@meshupadudu,@jupaivareal,@LettersRobert,@rahsetjdhyf,@yoncex6u8,@xanto_villalbax,@cabellobct,@juliolive123,@winchestlobinho,@beyoncexxxxxxx1,@alwayspezz,@troye_is_bae_,@DebsSanttos,@laislydrewhoran,@strongomezx,@VeranoMTV2016sg,@sousoumasha7,@XZaynsMyLifeX,@liansimil,@jtfantko,@moonlight_mixer,@supercliffxrd,@beyoncexxxxxxx3,@PandaGalatico,@Drewcondaa,@CHARMINGJERRIE,@ghfjkmmgbfh,@LumiaRohan,@blyber_,@badwolfie97,@OspinaLaura2001,@DREWBANDIDINHO,@sweet_lauren16,@pookkyy36,@bey5s0s,@AnizLama,@beyonce754xx,@sorry_cuzao,@LehFeSena,@KlNGLOUIST,@beyoncexxx1276,@leighions,@88AUBRIH,@andrejahorvat2,@sousoumasha7,@AngelaGonza503,@cvssmilly13,@LernUnicorn,@Its_Mrs_Malik26,@alu_flores,@resistwithkarol,@amanddl_,@GlLancelotti,@larryxaltada,@horandengo,@beyhive94766363,@KociubaJessica,@jacksuburbia,@KYLIESCHILD,@justinbey5,@andrezzanavy28
-	----------
-	Hashtag: #KimExplosedTaylorParty (48 tweets)
-	Authors: @gabiigarrido_,@Sophiaesr,@AndyIsAddicted,@mixtapee94,@MsHoranLima,@cosettexz,@DemiBodySay_5H,@iwantlarry,@mikasamaral,@insideagb,@WtfJessi3,@faizfarizza,@anadalca,@itjunioor,@bsandtpm,@zaclovatocyrus,@SpiderWeb2007,@pleeasetakeme,@RrRuthfreitas,@OncerNaty,@bieberdolanx,@oi_abigo,@ZAYNOIADOSORRY,@mikeapplehead_,@youdestiel,@whomabell,@AmorABeyonce2,@FALTTAZAYN,@RistinaWlndri,@LisbaniaIvaneth,@Torrya_,@sprayberryxxx,@Leohneri,@lovawticzquad,@xperfectmendesx,@TreasableN,@RedPillRabbit,@pauhlien,@nicacioanapaula,@brakuszu,@F4NCYxH4RRY,@lahh_ribeiro,@klasskingkylie,@trouxaforlovato,@lovaticute01,@kelyyanah,@tiarachristean,@Reebecachaves
-	----------
-	Hashtag: #DolceAmorePusongBato (46 tweets)
-	Authors: @HopeingL,@HopieGil17,@Beautifulizquen,@ZacharyPenelope,@serenabaguio,@ZenaildaE,@comfortbil2,@babykentoy,@liza_mari24,@lqiloveyou,@eneers02,@hopiaquentoy4,@quenliza74,@22Fyriz,@hopenrique8,@hoopey224_,@chebautista005,@jeresthy62,@gil_espoir,@hopiaquentoy5,@charmeetme1,@shan_heart_13,@lqasia1723,@sylverbells2016,@hoopia_,@enrix_24,@melodeyy22,@NovelynDe,@JamellalaHOPE,@EdwinNgooo,@JoshuaNovida,@serenatentenDA,@MarilethVillaM1,@hopiaquentoy4,@belle_noque,@AudreyILoveYou1,@Babyliza31,@BelleNoque,@BlackGtrQuen,@enrix_24,@Coolyano123,@MagaretteBauti1,@lizquengil128,@ZenaildaE,@Eme_rald18,@hopiaquentoy26
-	----------
-	Hashtag: #YineMeydanlardayız (31 tweets)
-	Authors: @631urfa631,@MEvrenB,@hamide_sert,@ozgebaydakk,@RecaiDurak,@aleynaduman123,@trntngr,@aslanncik,@BurhanKutsi,@CananRedime,@CananGulnihal,@ghjurfa,@VuralGulaycan,@sedef_recep,@solak_feride,@akgenclikalanya,@vasaturfali,@Cemyiit16,@burki1212,@has_kadirr,@HAdilcan,@HakanFethi,@KamilMah91,@mesutakgul06,@TarAkadli,@KgozDefne,@kangali_rodos33,@RahimeSevgi,@recepnniyazz,@SaraylK,@VarogluDuygu
-	----------
-	Hashtag: #KimExposedTaylorParty (26 tweets)
-	Authors: @cakalusa,@camilansiosa,@rumorsbiebs,@camilagrita,@sadversacee,@yiwa_wawa,@ilovelevine79,@reefalhattab,@xandertenten,@larryfrustrado,@_kellymacx,@_gabbim,@laurynninspires,@nouisxmikeyxdem,@sexyypeach,@butmylou,@smileyvsl,@stylesmyshine,@phthur,@kristinaduran_,@cwab_kidd,@ponymun,@nataliaromnovaa,@Grandrewz,@CHOLIANDO,@KlvnMnstr
-	----------
-	Hashtag: #FanArmyFaceOff (22 tweets)
-	Authors: @mixersempre1,@mixersempre1,@macaibarra17,@_cgranado,@Dendritx,@queen__1417,@_Roshanak_,@oylamayedek1,@Yongseo_Kim,@TheBestGaGa_BR,@sex_hshs,@PassGaGa,@imirrorinthemis,@pinkinslorddf,@ladvsgaga,@SexSnsjdn,@Reloade17317391,@majestarei,@ZaynSquadBrasil,@ChooserGaGa,@hjjjjjjkkk2,@amenvenuss
-	----------
-	Hashtag: #LittleMonsters (14 tweets)
-	Authors: @mixersempre1,@mixersempre1,@ladvsgaga,@TheBestGaGa_BR,@sex_hshs,@PassGaGa,@imirrorinthemis,@pinkinslorddf,@ChooserGaGa,@hjjjjjjkkk2,@amenvenuss,@SexSnsjdn,@Reloade17317391,@majestarei
-	----------
-	Hashtag: #Urband5 (13 tweets)
-	Authors: @SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya,@SoyPaoMaya
-	----------
-	Hashtag: #KCAMexico (12 tweets)
-	Authors: @MairaaAbrahamer,@taniaa_AM,@ele_rodri27,@JORGEGO4LS,@CeciliaPalomo4,@andreachanbe1,@xlizirwin,@SoyPaoMaya,@SoyNorahMendoza,@Zarenda_Shipper,@serendiptyhes,@marianarosas111
-	----------
-	Hashtag: #gameinsight (12 tweets)
-	Authors: @Donndee1,@rabynum1116,@danilova7,@9b03d34e9ac8491,@LfSLiKBRQnOs1Qw,@swhite2530,@t8PyPXV18jsqAwm,@Janette67812413,@rhondar30,@X3wqE4vWyc4g0qD,@max38485393,@HaydenCruz4
-	----------
-	Hashtag: #MilletDestanYazıyor (12 tweets)
-	Authors: @JaleMazgr,@ihsan_peker,@YilmazYil00,@sevgierdogann2,@TandoganOnder,@yilmaz_bayramm,@TurAk00,@taskintaskopar2,@ErolErolatak,@yaseminkaplann2,@HaticekbraAkkk,@hwdurmus
-	----------
-	Hashtag: #DolceAmorePusongBatoKeep (10 tweets)
-	Authors: @hope_hopie,@liza4modess,@mynameiscalay,@SerenaSese01,@BIGme2016,@QuentooQuenitoy,@leez_quen,@QuenxLiz,@leezquee4,@jgtrinity
-	----------
-	Hashtag: #androidgames, (10 tweets)
-	Authors: @rabynum1116,@danilova7,@9b03d34e9ac8491,@LfSLiKBRQnOs1Qw,@swhite2530,@t8PyPXV18jsqAwm,@Janette67812413,@rhondar30,@X3wqE4vWyc4g0qD,@max38485393
-	----------
-	Hashtag: #MyWattysChoice (10 tweets)
-	Authors: @whos_viih,@shadakies,@Niall_and_shoes,@Niall_4_evabruh,@NHORANgotangoo,@Niall_4_evabruh,@My_Name_IsBruh,@MarryIsMyOTP,@imgabriellak,@OrgasmHemmo96
-	----------
-	Hashtag: #ReturnOfDrAamir (10 tweets)
-	Authors: @FarighKVirk,@SabzHilaliFlag,@AmmarahFayyaz,@IamAhmadSelfie,@CricketBulletin,@hareemkhanpk,@BlackParado,@pakistanevents1,@ModelSoniaKhan,@OyeTeriTau
-	----------
-	Hashtag: #TeenChoice (9 tweets)
-	Authors: @kayceesierra16,@mile1694,@mile1694,@AngelHole1,@ROJKIRIE,@kyumin3013,@jtfantko,@sjelf4ever02,@kyliestyles0102
-	----------
-	Hashtag: #DolceAmorePusongBatoIf (8 tweets)
-	Authors: @Intoliza11,@adoradomaris,@intoquenGIL,@honeyniQUEN,@princes11098691,@leezquee4,@04Serten,@amoremioLQ
-	----------
-	Hashtag: #BIGOLIVE. (8 tweets)
-	Authors: @NBoonkwang,@kd1288,@PeemosSmc,@Icil950056951,@kungza312533,@NBoonkwang,@Icil950056951,@pick_matsee
-	----------
-	Hashtag: #android, (8 tweets)
-	Authors: @rabynum1116,@swhite2530,@LfSLiKBRQnOs1Qw,@t8PyPXV18jsqAwm,@rhondar30,@X3wqE4vWyc4g0qD,@Janette67812413,@max38485393
-	----------
-	Hashtag: #춘자넷 (8 tweets)
-	Authors: @axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf,@axikftpjfgzuf
-	----------
+	Hashtag:  #MTVHottest (115 tweets)
+	Authors:  @melow324,@yasminsantossz1,@lmfor631,@lmfor432,@lmfor685,@lmfor678,@TropaTTT75,@lmfor641,@BrownieDinah,@drewzfucker,@teamahfod26,@lmfor508,@lmfor578,@lmfor630,@lmfor577,@lmfor542,@pookkyy89,@mtvvotosCp_266,@lmfor691,@divxharry,@guigui_cast,@lmfor598,@lmfor593,@lmfor617,@lmfor801,@lmfor462,@lmfor530,@Eduardaa_almeid,@lmfor767,@lmfor748,@lmfor755,@lmfor828,@lmfor787,@lmfor830,@nortiz_6,@Nortiz88,@OrtizLill,@magconfhelp,@lmfor458,@lmfor543,@lmfor648,@lmfor417,@dayumjacobz,@lmfor683,@lmfor634,@teamahfod42,@teamahfod61,@mtvvotosCp_162,@teamahfod62,@BieberVotos3,@teamahfod57,@pookkyy102,@lmfor460,@siete6666666,@lmfor599,@lmfor526,@ruth_adriana04,@lmfor499,@lmfor503,@luarcamren,@Idriannnaaa,@votebieberszws,@mtvvotosCp_286,@lmfor720,@lmfor465,@alineaiasca,@Pytter_Solpha,@sorryajb4,@5sosaf69,@lmfor551,@lmfor546,@lmfor541,@cutebiebsx,@matthewaffles_,@voterepublic,@LariDrew_94,@ViihBelieber11,@lmfor700,@lmfor702,@lovatics_chatos,@KeixjskdjsjJ,@bitxhcrazyh,@mtvvotosCp_112,@pookkyy127,@VeranoMTV2016sg,@lmfor653,@lmfor770,@lmfor786,@lmfor788,@lmfor818,@lmfor785,@lmfor792,@itskawdashians,@lmfor466,@mtvvotosCp_004,@lmfor479,@lmfor488,@5sosaf50,@TropaTTT6,@PaullaBieberSz,@lmfor552,@lmfor572,@lmfor585,@lmfor725,@lmfor470,@lmfor651,@lmfor654,@fifthgold,@nurbanubiebs,@pookkyy132,@lmfor409,@saradggg,@lmfor758,@lmfor752,@lmfor764
+	Mentions: @globalfivesauce,@YasminSantosx,@JBPROJETO24HRS,@zaynandcourtney,@ProjetoTagsJB,@magconfhelp,@LukeTheRebel,@inworldcoldplay,@parxchutes,@ValeIbanezJH,@bxringrxy,@worthsantana,@HalaliZJM,@IronicBadBeyxo,@Jennycat1R,@ProjetooBieber,@JBChart,@naxkkskxmx
+
+	Hashtag:  #KCAMexico (23 tweets)
+	Authors:  @jorjaodobraz,@angie_odamercy,@MaraIriarte2,@DulceteSantiago,@KarolQuerozene,@julionalexandro,@InfoDEUA,@folks_dmes,@DMApoyoPeru,@Mutanoverdi,@CaroDmLove,@Aly_AbeMateo,@DmChile1,@fernadinhawj,@DulceteDMaria,@DulceJuntos,@gabizeradm,@DulceMariaDS,@mylovearigb,@KellenyeKathyus,@alejand10847424,@DulceSantiagoMa,@DannaZ1996
+	Mentions: @AMDaiArgentina,@dudaebelinha261,@DebMarquezE,@jancarlobg
+
+	Hashtag:  #DulceMaria (17 tweets)
+	Authors:  @jorjaodobraz,@DulceteSantiago,@KarolQuerozene,@julionalexandro,@InfoDEUA,@DmChile1,@fernadinhawj,@DulceteDMaria,@DulceJuntos,@gabizeradm,@DulceMariaDS,@folks_dmes,@DMApoyoPeru,@Mutanoverdi,@CaroDmLove,@DulceSantiagoMa,@KellenyeKathyus
+
+	Hashtag:  #DulceMariaTrendy (17 tweets)
+	Authors:  @jorjaodobraz,@DulceteSantiago,@KarolQuerozene,@julionalexandro,@InfoDEUA,@DmChile1,@fernadinhawj,@DulceteDMaria,@DulceJuntos,@gabizeradm,@DulceMariaDS,@folks_dmes,@DMApoyoPeru,@Mutanoverdi,@CaroDmLove,@DulceSantiagoMa,@KellenyeKathyus
+
+	Hashtag:  #SelfieForTheDolanTwins (16 tweets)
+	Authors:  @vale_852,@idolizedolans,@julisacaylen,@LittleGrier_,@dolanftknj,@futuredolan,@Nevedouglas5,@stelinadolan,@holdmedirksen_,@wertuvey,@CashewDolans,@only4tuesdays,@larrybossz,@WILDDOLANS,@DerianONeill,@kail6600
+	Mentions: @EthanDolan,@GraysonDolan,@hippiedudejc,@LittleGrier_,@ANABELAMRTINS
+
+	Hashtag:  #VeranoMTV2016 (16 tweets)
+	Authors:  @teamahfod26,@Tah_camz,@CAMRENPROIBIDAO,@mtvvotosCp_266,@RenataMFH5,@hootisa_,@teamahfod42,@teamahfod61,@mtvvotosCp_162,@teamahfod62,@teamahfod57,@harmonizer1996x,@Ca_Kordei,@mtvvotosCp_286,@mtvvotosCp_112,@mtvvotosCp_004
+	Mentions: @natalliesilvap,@Projeto5HVotes,@5hmonamour,@5HlovatosDay,@Lauraa_KL
+
+	Hashtag:  #OneDirectionIsOverParty (10 tweets)
+	Authors:  @LouiShamelesss,@HaroKitzia,@bruna_conde,@maddiempz2878,@ftniallerandbae,@nava_1d49,@Kinda_Weird_Tho,@theirishchonce,@YaresiRangel,@Lodo_bella_
+	Mentions: @h4rrycouldfly,@WorldDMs1,@nandos_mars,@thestylesfandom,@callywilk,@NarryMyDream,@M4RVEL0UIS,@teawafer
+
+	Hashtag:  #矢澤にこ生誕祭2016 (10 tweets)
+	Authors:  @spring_koharu,@Kannagi_line,@tosyotai,@kamui_0830_,@prince_John7,@31BvhCPHH9qdvX6,@nayuta_forever9,@nyanko943,@PShunji,@Lright1081
+	Mentions: @seira_lalala_,@onepiece11114,@comess0,@Tomoya637995711,@Natsuki03824185,@Q7KfJCNH2MzfMus,@ganba_ruby,@tokui_sorangley,@mayudo_lv25,@shino_kotori
+
+	Hashtag:  #ALDUBGetThemLolaTini (8 tweets)
+	Authors:  @tragedy_joan,@dulceferido,@RihnaRamos,@OxChoppy,@julie_pacia,@AracanCorazon,@chloebeatriz72,@ariston_joie
+	Mentions: @alialsz_aq2,@kimmalberto,@tragedy_joan,@neiltann,@AisAuh,@legion_ligaya8,@MAINEnatics_OFC,@mainedcm,@arzlgarcia,@AlDubBigBoyz,@aldenrichards02,@noriegee,@SenyoraRihanna,@ImTidora
+
+	Hashtag:  #TeenWolfSDCC (6 tweets)
+	Authors:  @jetblacklarrie,@pamelacrystinaa,@chickenofbea,@amandacdamasio,@heavysoal,@iodicesvoice
+	Mentions: @MTVteenwolf,@NewsTeenWolfBR,@TEEN_WOLFFR_,@voidstilinskj
+
+	Hashtag:  #TeenChoice (6 tweets)
+	Authors:  @RizeyMonster,@LaMoglieDiLuke,@abby0512,@rawan931,@SakuraKuchiki,@AngiieGalviis23
+	Mentions: @tedoydurosehun,@GraysonDolan,@EthanDolan,@itsruthb,@ShadyFacts5H,@FifthHarmony,@REFAN_SJ,@cata1615,@MileyCyrus
+
+	Hashtag:  #التعليم_المصري_محتاج (6 tweets)
+	Authors:  @AttyaEbrahim2,@ziena333,@mnonaaz,@Dedy00000,@120k0007,@melzanaty1111
+	Mentions: @martinasamer68,@alaakhaled953,@eraky_ibrahim,@Amr_EL_MaZaGnGi,@sosa99soo,@AlganMoha,@ahmedd_saad
+
+	Hashtag:  #ودي_اقولك (6 tweets)
+	Authors:  @crgz52,@MtemplinTemplin,@xiwvqi1,@Joodi_Almutairi,@LauraLtello,@PerlmanGay
+	Mentions: @MoniiiiiiRose,@viio_5
+
+	Hashtag:  #24YearsKillingWithKindness (5 tweets)
+	Authors:  @_waiting4you_,@mendesxcupcake,@stonelouiscold,@jelenaschild_,@TomyC8
+	Mentions: @agbscutiepie,@malikdefenses,@sameoldays,@heyselenabrasil
+
+	Hashtag:  #RTした人全員フォローする (5 tweets)
+	Authors:  @kamui_0830_,@prince_John7,@31BvhCPHH9qdvX6,@nayuta_forever9,@Lright1081
+	Mentions: @Tomoya637995711,@Natsuki03824185,@Q7KfJCNH2MzfMus,@ganba_ruby,@shino_kotori
+
+	Hashtag:  #on (4 tweets)
+	Authors:  @7ndwice,@ioisoumi123,@doyieonf,@SiyeonPG
+
+	Hashtag:  #SDCC2016 (4 tweets)
+	Authors:  @xxDistrustedxx,@StocktonAmanda,@HedaSilverWolfe,@L_yOdakim
+	Mentions: @DavidMLatt,@TheLastShipTNT,@BrenFosterReal,@IGN,@DebnamCarey,@FearTWD,@RichardSHarmon,@Delta
+
+	Hashtag:  #RNCinCLE (4 tweets)
+	Authors:  @CriswellsOk,@WakeupHudsonOH,@CowgirlUp035,@shellz360
+	Mentions: @asamjulian,@RichardAngwin,@TEN_GOP,@CNN
+
+	Hashtag:  #NowPlaying (4 tweets)
+	Authors:  @TeamFMTracks,@GundackerRocks,@lexi_loves5sos,@mert_ozsevinc
+	Mentions: @WNDYRadio365,@SONORDRUMN,@gundacker1,@GundackerRocks,@WinTBM,@Arzaylea
+
+	Hashtag:  #QueroIdelfonsoNoBBB17 (4 tweets)
+	Authors:  @MuitoSDV,@PoderSDV,@ReciteiDoTumblr,@SomandoSDV
+	Mentions: @joatez12,@boninho,@IdelfonsoReal,@bbb,@Jardel_BrazLL
+
 
 
