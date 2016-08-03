@@ -1,12 +1,16 @@
-## W251 HW 12
+## W251 HW 12 - Elasticsearch
+
 Chris Murray
 
+
 ### Data
+
 The data is the Colorado voter registration database, available at http://coloradovoters.info/ .
-Data quality issues did prevent some data from loading, but this is a fairly complete dataset.
+Data quality issues prevented some data from loading but the dataset is mostly complete.
 
 
 ### ElasticSearch GUI
+
 I attempted to set up the ElasticSearch GUI but had a lot of difficulty.
 Nevertheless, it is accessible at
 
