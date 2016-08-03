@@ -3,10 +3,12 @@ Chris Murray
 
 ### Data
 The data is the Colorado voter registration database, available at http://coloradovoters.info/ .
+Data quality issues did prevent some data from loading, but this is a fairly complete dataset.
 
 
 ### ElasticSearch GUI
-I attempted to set up the ElasticSearch GUI but had a lot of difficulty.  Nevertheless, it is accessible at
+I attempted to set up the ElasticSearch GUI but had a lot of difficulty.
+Nevertheless, it is accessible at
 
   http://50.97.196.178:9200/_plugin/gui/index.html 
 
@@ -21,7 +23,7 @@ See if there are any voters with house number 12345:
 
   http://50.97.196.178:9200/voters/_search?q=house_num:12345&pretty
 
-Look up phone number 303-455-1211: (Oh, hello Governor!)
+Look up phone number 303-455-1211 (oh, hello Governor!):
 
   http://50.97.196.178:9200/voters/_search?q=phone_num:3034551211&pretty
 
