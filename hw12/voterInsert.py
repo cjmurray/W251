@@ -28,7 +28,7 @@ with open(fname) as f:
 		for i in range(len(fields)):
 			# print "%s: %s" % (headers[i], fields[i])
 			body[headers[i]] = fields[i]
-		result = es.index(index=index, doc_type=doc_type, id=id, body=body)
+		result = es.index(index=index, doc_type=doc_type, id=body["voter_id"], body=body)
 		id += 1
 		# print result
 
